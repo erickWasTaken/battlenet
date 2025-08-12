@@ -1,11 +1,21 @@
 #!/bin/bash
 
+includes="-I$HOME/.local/share/vcpkg/installed/x64-linux/include"
 warnings="-Wno-writable-strings -Wno-format-security -Wno-deprecated-declarations -Wno-switch"
+buildpath="build"
 
 if [[ "$(uname)" == "Linux" ]]; then
     echo "Running on Linux"
-    libs="-lGL"
-    outputFile=app
+    libs="-lGL -lsfml-graphics -lsfml-system -lsfml-window"
+    outputFile=unix
 fi
 
-clang++ -g src/main.cpp -o$outputFile $libs $warnings
+if [ -d "build" ]; then
+    echo "build directory found! Building files accordingly..."
+else
+    mkdir build
+fi
+
+clang++ $includes -g src/main.cpp -o$outputFile $libs $warnings
+mv $outputFile $buildpath
+
