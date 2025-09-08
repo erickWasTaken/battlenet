@@ -2,21 +2,20 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
-using sf::Window;
+#include "game.hpp"
+
+using sf::RenderWindow;
 using sf::Vector2f;
 
-Window win;
+RenderWindow* win;
 
 int main(){
-    win.create(sf::VideoMode({1280, 720}), "WIN TEST", sf::Style::None, sf::State::Windowed);
+    win = new RenderWindow(sf::VideoMode({1280, 720}), "REN WIN TES", sf::Style::None, sf::State::Windowed);
+    win->setPosition({0, 0});
+    win->setFramerateLimit(60);
 
-    while(win.isOpen()){
-        win.display();
-        while(const std::optional event = win.pollEvent()){
-            if(event->is<sf::Event::Closed>())
-                win.close();
-        }
-    }
+    Game game{ win };
+    game.Run();
 
     return 1;
 }

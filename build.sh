@@ -1,6 +1,6 @@
 #!/bin/bash
 
-includes="-I$HOME/.local/share/vcpkg/installed/x64-linux/include"
+includes="-I$VCPKG_ROOT/installed/x64-linux/include -Iextern"
 warnings="-Wno-writable-strings -Wno-format-security -Wno-deprecated-declarations -Wno-switch"
 buildpath="build"
 
@@ -16,6 +16,6 @@ else
     mkdir build
 fi
 
-clang++ $includes -g src/main.cpp -o$outputFile $libs $warnings
+clang++ $includes -g src/*.cpp -o$outputFile $libs $warnings
 mv $outputFile $buildpath
 
