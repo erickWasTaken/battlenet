@@ -12,7 +12,8 @@ RenderWindow* win;
 int main(){
     win = new RenderWindow(sf::VideoMode({1280, 720}), "REN WIN TES", sf::Style::None, sf::State::Windowed);
     win->setPosition({0, 0});
-    win->setFramerateLimit(60);
+    win->setFramerateLimit(120);
+    win->setView(sf::View({0, 0}, {1280, 720}));
 
     Game game{ win };
     game.Run();

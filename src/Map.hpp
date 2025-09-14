@@ -2,7 +2,7 @@
 
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Image.hpp>
-#include <SFML/Graphics/RenderTexture.hpp>
+#include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Vector2.hpp>
 
 using sf::Vector2i;
@@ -23,9 +23,10 @@ private:
 
     sf::Image layout;
     sf::Texture atlas;
+    int displacement = 0;
 public:
     Map(const char* atlasPath);    
-    void Draw(sf::RenderTexture target);
+    void Draw(sf::RenderWindow* target);
     void Load();
     void Test();
     ~Map();
