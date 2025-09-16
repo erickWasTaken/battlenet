@@ -1,7 +1,7 @@
 #!/bin/bash
 
 includes="-I$VCPKG_ROOT/installed/x64-linux/include -Iextern"
-warnings="-Wno-writable-strings -Wno-format-security -Wno-deprecated-declarations -Wno-switch"
+warnings="-Wno-writable-strings -Wno-format-security -Wno-deprecated-declarations -Wno-switch -Wno-unused-result"
 buildpath="build"
 
 if [[ "$(uname)" == "Linux" ]]; then
@@ -16,6 +16,6 @@ else
     mkdir build
 fi
 
-clang++ $includes -g src/*.cpp -o$outputFile $libs $warnings
+clang++ $includes -g main.cpp -o$outputFile $libs $warnings
 mv $outputFile $buildpath
 
