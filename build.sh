@@ -16,6 +16,6 @@ else
     mkdir build
 fi
 
-clang++ $includes -g main.cpp -o$outputFile $libs $warnings
+clang++ $includes -g src/**.cpp -o$outputFile $libs $warnings
 mv $outputFile $buildpath
 
