@@ -23,7 +23,7 @@ namespace FileUtil{
     };
 
 
-    string Read(string& path){
+    static string Read(const string& path){
         auto *in = fopen(path.c_str(), "r");
         if(!in)
             return "";
@@ -37,6 +37,6 @@ namespace FileUtil{
         fread(buff, sizeof(char), size, in);
 
         fclose(in);
-        return (string)buff;
+        return (const string)buff;
     }
 };
