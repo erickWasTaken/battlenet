@@ -1,8 +1,9 @@
 #include <iostream>
 
 #include "DrawWindow.hpp"
-#include "FileUtil.hpp"
+#include "Util.hpp"
 #include "XML.hpp"
+#include "MapLoader.hpp"
 
 using namespace std;
 
@@ -11,17 +12,9 @@ int main(){
     DrawWindow win;
     win.Initialize("", DrawWindow::WindowMode::windowed);
 
-    string path("../resources/maps/homepage.tmx");
-    string attrib("nextlayerid");
-
-    XMLElement map = parseXML(FileUtil::Read(path));
-
-    string out = map.GetAttribute(attrib);
-
-    cout << 
-        "::READING FILE:: \n" << 
-         out << 
-    endl;
+    // string path("../resources/maps/homepage.tmx");
+    // auto map = Overworld::LoadTiledMap(path);
+    cout << StringUtil::to_int("0847295") << endl;
 
     while(win.isOpen()){
         win.clear();
