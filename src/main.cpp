@@ -12,12 +12,14 @@ int main(){
     DrawWindow win;
     win.Initialize("", DrawWindow::WindowMode::windowed);
 
-    // string path("../resources/maps/homepage.tmx");
-    // auto map = Overworld::LoadTiledMap(path);
-    cout << StringUtil::to_int("0847295") << endl;
+    string path("../resources/ow/maps/homepage.tmx");
+    auto map = Overworld::LoadTiledMap(path);
+    Vector2i dimensions = map->GetTileDimensions();
+    cout << "tile_width: " << dimensions.x << ", tile_height: " << dimensions.y << endl;
 
     while(win.isOpen()){
         win.clear();
+        map->Draw(&win);
         win.display();
     }
     return 0;

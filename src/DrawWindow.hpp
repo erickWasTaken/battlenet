@@ -20,6 +20,7 @@ public:
 
     // Test purpose -- IMPLEMENT AFTERWARDS
     void clear(){return win->clear();}
+    void draw(const Sprite draw){return win->draw(draw);}
     void display(){return win->display();}
 
     void Initialize(const string& title, WindowMode mode);
